@@ -1,22 +1,11 @@
 {
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Sid": "DenyAllExceptAdminActions",
-      "Effect": "Deny",
-      "NotAction": [
-        "organizations:*",
-        "support:*",
-        "billing:*",
-        "account:CloseAccount",
-        "account:GetAccountInformation",
-        "iam:GetRole",
-        "iam:ListRoles",
-        "sts:GetCallerIdentity",
-        "cloudtrail:LookupEvents",
-        "cloudtrail:GetTrailStatus"
-      ],
-      "Resource": "*"
-    }
-  ]
+   "Version":"2012-10-17",
+   "Statement":[
+      {
+         "Sid":"DenyAllActions",
+         "Effect":"Deny",
+         "Action":"*",
+         "Resource":"*"
+      }
+   ]
 }
