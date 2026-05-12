@@ -15,9 +15,6 @@ resource "aws_organizations_policy" "scp" {
   type        = "SERVICE_CONTROL_POLICY"
   content     = each.value.policy_document
 
-  # Enable policy validation if configured
-  depends_on = var.enable_policy_validation ? [] : []
-
   tags = merge(
     each.value.tags,
     var.common_tags

@@ -66,10 +66,10 @@ variable "common_tags" {
   
   validation {
     condition = alltrue([
-      for key in ["Client", "Project", "Environment", "Owner", "CostCenter"] :
+      for key in ["client", "project", "environment", "owner", "cost-center"] :
       contains(keys(var.common_tags), key)
     ])
-    error_message = "common_tags must include: Client, Project, Environment, Owner, CostCenter."
+    error_message = "common_tags must include: client, project, environment, owner, cost-center."
   }
 }
 

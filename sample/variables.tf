@@ -90,11 +90,11 @@ variable "common_tags" {
   type        = map(string)
   description = "Common tags to apply to all resources"
   default = {
-    Client      = "example"
-    Project     = "platform"
-    Environment = "dev"
-    Owner       = "platform-team"
-    CostCenter  = "engineering"
+    client      = "example"
+    project     = "platform"
+    environment = "dev"
+    owner       = "platform-team"
+    cost-center  = "engineering"
   }
 }
 

@@ -8,6 +8,9 @@
 # ============================================================================
 module "organization_scps_poc" {
   source = "../"
+  providers = {
+    aws.project = aws.principal
+  }
 
   client       = var.client
   project      = var.project
@@ -27,6 +30,9 @@ module "organization_scps_poc" {
 # ============================================================================
 module "organization_scps_prod" {
   source = "../"
+  providers = {
+    aws.project = aws.principal
+  }
 
   client       = var.client
   project      = var.project
@@ -46,6 +52,9 @@ module "organization_scps_prod" {
 # ============================================================================
 module "organization_scps_suspended" {
   source = "../"
+  providers = {
+    aws.project = aws.principal
+  }
 
   client       = var.client
   project      = var.project
@@ -65,6 +74,9 @@ module "organization_scps_suspended" {
 # ============================================================================
 module "organization_scps_shared" {
   source = "../"
+  providers = {
+    aws.project = aws.principal
+  }
 
   client       = var.client
   project      = var.project
