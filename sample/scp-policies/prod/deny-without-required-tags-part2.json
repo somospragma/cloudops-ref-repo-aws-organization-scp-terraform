@@ -1,0 +1,172 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "DenyInvalidTerritoryTag",
+      "Effect": "Deny",
+      "Action": [
+        "ec2:RunInstances",
+        "ec2:CreateVolume",
+        "ec2:CreateVpc",
+        "ec2:CreateSubnet",
+        "ec2:CreateSecurityGroup",
+        "ec2:CreateNatGateway",
+        "ec2:AllocateAddress",
+        "rds:CreateDBInstance",
+        "rds:CreateDBCluster",
+        "s3:CreateBucket",
+        "lambda:CreateFunction",
+        "ecs:CreateCluster",
+        "ecs:CreateService",
+        "elasticloadbalancing:CreateLoadBalancer",
+        "dynamodb:CreateTable",
+        "sqs:CreateQueue",
+        "sns:CreateTopic",
+        "logs:CreateLogGroup",
+        "kms:CreateKey",
+        "secretsmanager:CreateSecret",
+        "eks:CreateCluster",
+        "iam:CreateRole",
+        "iam:CreateUser",
+        "bedrock-agentcore:Create*",
+        "cloudfront:CreateDistribution",
+        "cognito-idp:CreateUserPool"
+      ],
+      "Resource": "*",
+      "Condition": {
+        "StringNotEqualsIfExists": {
+          "aws:RequestTag/territory": [
+            "colombia",
+            "eeuu",
+            "mexico",
+            "cac",
+            "global"
+          ]
+        }
+      }
+    },
+    {
+      "Sid": "DenyMissingTerritoryTag",
+      "Effect": "Deny",
+      "Action": [
+        "ec2:RunInstances",
+        "ec2:CreateVolume",
+        "ec2:CreateVpc",
+        "ec2:CreateSubnet",
+        "ec2:CreateSecurityGroup",
+        "ec2:CreateNatGateway",
+        "ec2:AllocateAddress",
+        "rds:CreateDBInstance",
+        "rds:CreateDBCluster",
+        "s3:CreateBucket",
+        "lambda:CreateFunction",
+        "ecs:CreateCluster",
+        "ecs:CreateService",
+        "elasticloadbalancing:CreateLoadBalancer",
+        "dynamodb:CreateTable",
+        "sqs:CreateQueue",
+        "sns:CreateTopic",
+        "logs:CreateLogGroup",
+        "kms:CreateKey",
+        "secretsmanager:CreateSecret",
+        "eks:CreateCluster",
+        "iam:CreateRole",
+        "iam:CreateUser",
+        "bedrock-agentcore:Create*",
+        "cloudfront:CreateDistribution",
+        "cognito-idp:CreateUserPool"
+      ],
+      "Resource": "*",
+      "Condition": {
+        "Null": {
+          "aws:RequestTag/territory": "true"
+        }
+      }
+    },
+    {
+      "Sid": "DenyInvalidCountryTag",
+      "Effect": "Deny",
+      "Action": [
+        "ec2:RunInstances",
+        "ec2:CreateVolume",
+        "ec2:CreateVpc",
+        "ec2:CreateSubnet",
+        "ec2:CreateSecurityGroup",
+        "ec2:CreateNatGateway",
+        "ec2:AllocateAddress",
+        "rds:CreateDBInstance",
+        "rds:CreateDBCluster",
+        "s3:CreateBucket",
+        "lambda:CreateFunction",
+        "ecs:CreateCluster",
+        "ecs:CreateService",
+        "elasticloadbalancing:CreateLoadBalancer",
+        "dynamodb:CreateTable",
+        "sqs:CreateQueue",
+        "sns:CreateTopic",
+        "logs:CreateLogGroup",
+        "kms:CreateKey",
+        "secretsmanager:CreateSecret",
+        "eks:CreateCluster",
+        "iam:CreateRole",
+        "iam:CreateUser",
+        "bedrock-agentcore:Create*",
+        "cloudfront:CreateDistribution",
+        "cognito-idp:CreateUserPool"
+      ],
+      "Resource": "*",
+      "Condition": {
+        "StringNotEqualsIfExists": {
+          "aws:RequestTag/country": [
+            "colombia",
+            "panama",
+            "guatemala",
+            "costa-rica",
+            "mexico",
+            "eeuu",
+            "honduras",
+            "global"
+          ]
+        }
+      }
+    },
+    {
+      "Sid": "DenyMissingCountryTag",
+      "Effect": "Deny",
+      "Action": [
+        "ec2:RunInstances",
+        "ec2:CreateVolume",
+        "ec2:CreateVpc",
+        "ec2:CreateSubnet",
+        "ec2:CreateSecurityGroup",
+        "ec2:CreateNatGateway",
+        "ec2:AllocateAddress",
+        "rds:CreateDBInstance",
+        "rds:CreateDBCluster",
+        "s3:CreateBucket",
+        "lambda:CreateFunction",
+        "ecs:CreateCluster",
+        "ecs:CreateService",
+        "elasticloadbalancing:CreateLoadBalancer",
+        "dynamodb:CreateTable",
+        "sqs:CreateQueue",
+        "sns:CreateTopic",
+        "logs:CreateLogGroup",
+        "kms:CreateKey",
+        "secretsmanager:CreateSecret",
+        "eks:CreateCluster",
+        "iam:CreateRole",
+        "iam:CreateUser",
+        "bedrock-agentcore:Create*",
+        "cloudfront:CreateDistribution",
+        "cognito-idp:CreateUserPool"
+      ],
+      "Resource": "*",
+      "Condition": {
+        "Null": {
+          "aws:RequestTag/country": "true"
+        }
+      }
+    }
+  ]
+}

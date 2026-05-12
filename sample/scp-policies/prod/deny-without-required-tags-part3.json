@@ -1,0 +1,157 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "DenyMissingClienteTag",
+      "Effect": "Deny",
+      "Action": [
+        "ec2:RunInstances",
+        "ec2:CreateVolume",
+        "ec2:CreateVpc",
+        "ec2:CreateSubnet",
+        "ec2:CreateSecurityGroup",
+        "ec2:CreateNatGateway",
+        "ec2:AllocateAddress",
+        "rds:CreateDBInstance",
+        "rds:CreateDBCluster",
+        "s3:CreateBucket",
+        "lambda:CreateFunction",
+        "ecs:CreateCluster",
+        "ecs:CreateService",
+        "elasticloadbalancing:CreateLoadBalancer",
+        "dynamodb:CreateTable",
+        "sqs:CreateQueue",
+        "sns:CreateTopic",
+        "logs:CreateLogGroup",
+        "kms:CreateKey",
+        "secretsmanager:CreateSecret",
+        "eks:CreateCluster",
+        "iam:CreateRole",
+        "iam:CreateUser",
+        "bedrock-agentcore:Create*",
+        "cloudfront:CreateDistribution",
+        "cognito-idp:CreateUserPool"
+      ],
+      "Resource": "*",
+      "Condition": {
+        "Null": {
+          "aws:RequestTag/cliente": "true"
+        }
+      }
+    },
+    {
+      "Sid": "DenyMissingOwnerTag",
+      "Effect": "Deny",
+      "Action": [
+        "ec2:RunInstances",
+        "ec2:CreateVolume",
+        "ec2:CreateVpc",
+        "ec2:CreateSubnet",
+        "ec2:CreateSecurityGroup",
+        "ec2:CreateNatGateway",
+        "ec2:AllocateAddress",
+        "rds:CreateDBInstance",
+        "rds:CreateDBCluster",
+        "s3:CreateBucket",
+        "lambda:CreateFunction",
+        "ecs:CreateCluster",
+        "ecs:CreateService",
+        "elasticloadbalancing:CreateLoadBalancer",
+        "dynamodb:CreateTable",
+        "sqs:CreateQueue",
+        "sns:CreateTopic",
+        "logs:CreateLogGroup",
+        "kms:CreateKey",
+        "secretsmanager:CreateSecret",
+        "eks:CreateCluster",
+        "iam:CreateRole",
+        "iam:CreateUser",
+        "bedrock-agentcore:Create*",
+        "cloudfront:CreateDistribution",
+        "cognito-idp:CreateUserPool"
+      ],
+      "Resource": "*",
+      "Condition": {
+        "Null": {
+          "aws:RequestTag/owner": "true"
+        }
+      }
+    },
+    {
+      "Sid": "DenyInvalidCostCenterTag",
+      "Effect": "Deny",
+      "Action": [
+        "ec2:RunInstances",
+        "ec2:CreateVolume",
+        "ec2:CreateVpc",
+        "ec2:CreateSubnet",
+        "ec2:CreateSecurityGroup",
+        "ec2:CreateNatGateway",
+        "ec2:AllocateAddress",
+        "rds:CreateDBInstance",
+        "rds:CreateDBCluster",
+        "s3:CreateBucket",
+        "lambda:CreateFunction",
+        "ecs:CreateCluster",
+        "ecs:CreateService",
+        "elasticloadbalancing:CreateLoadBalancer",
+        "dynamodb:CreateTable",
+        "sqs:CreateQueue",
+        "sns:CreateTopic",
+        "logs:CreateLogGroup",
+        "kms:CreateKey",
+        "secretsmanager:CreateSecret",
+        "eks:CreateCluster",
+        "iam:CreateRole",
+        "iam:CreateUser",
+        "bedrock-agentcore:Create*",
+        "cloudfront:CreateDistribution",
+        "cognito-idp:CreateUserPool"
+      ],
+      "Resource": "*",
+      "Condition": {
+        "StringNotEqualsIfExists": {
+          "aws:RequestTag/cost-center": "9952"
+        }
+      }
+    },
+    {
+      "Sid": "DenyMissingCostCenterTag",
+      "Effect": "Deny",
+      "Action": [
+        "ec2:RunInstances",
+        "ec2:CreateVolume",
+        "ec2:CreateVpc",
+        "ec2:CreateSubnet",
+        "ec2:CreateSecurityGroup",
+        "ec2:CreateNatGateway",
+        "ec2:AllocateAddress",
+        "rds:CreateDBInstance",
+        "rds:CreateDBCluster",
+        "s3:CreateBucket",
+        "lambda:CreateFunction",
+        "ecs:CreateCluster",
+        "ecs:CreateService",
+        "elasticloadbalancing:CreateLoadBalancer",
+        "dynamodb:CreateTable",
+        "sqs:CreateQueue",
+        "sns:CreateTopic",
+        "logs:CreateLogGroup",
+        "kms:CreateKey",
+        "secretsmanager:CreateSecret",
+        "eks:CreateCluster",
+        "iam:CreateRole",
+        "iam:CreateUser",
+        "bedrock-agentcore:Create*",
+        "cloudfront:CreateDistribution",
+        "cognito-idp:CreateUserPool"
+      ],
+      "Resource": "*",
+      "Condition": {
+        "Null": {
+          "aws:RequestTag/cost-center": "true"
+        }
+      }
+    }
+  ]
+}

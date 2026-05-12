@@ -1,0 +1,11 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "DenyRootAccessKeys",
+      "Effect": "Deny",
+      "Action": "iam:CreateAccessKey",
+      "Resource": "arn:aws:iam::*:root"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "DenyUntaggedResources",
+      "Effect": "Deny",
+      "Action": [
+        "ec2:RunInstances",
+        "ec2:CreateVolume",
+        "ec2:CreateVpc",
+        "ec2:CreateSubnet",
+        "ec2:CreateSecurityGroup",
+        "rds:CreateDBInstance",
+        "rds:CreateDBCluster",
+        "s3:CreateBucket",
+        "lambda:CreateFunction",
+        "ecs:CreateCluster",
+        "ecs:CreateService",
+        "elasticloadbalancing:CreateLoadBalancer",
+        "dynamodb:CreateTable",
+        "sqs:CreateQueue",
+        "sns:CreateTopic",
+        "logs:CreateLogGroup",
+        "kms:CreateKey"
+      ],
+      "Resource": "*",
+      "Condition": {
+        "Null": {
+          "aws:RequestTag/Environment": "true"
+        }
+      }
+    }
+  ]
+}

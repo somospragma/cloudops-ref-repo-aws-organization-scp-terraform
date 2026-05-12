@@ -1,0 +1,159 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "DenyInvalidProjectTag",
+      "Effect": "Deny",
+      "Action": "cloudwatch:PutMetricAlarm",
+      "Resource": "*",
+      "Condition": {
+        "StringNotEqualsIfExists": {
+          "aws:RequestTag/project": ["sopp-dev", "sopp-poc", "sopp-prod"]
+        },
+        "ArnNotLike": {
+          "aws:PrincipalArn": "arn:aws:iam::*:role/aws-service-role/*"
+        }
+      }
+    },
+    {
+      "Sid": "DenyMissingProjectTag",
+      "Effect": "Deny",
+      "Action": "cloudwatch:PutMetricAlarm",
+      "Resource": "*",
+      "Condition": {
+        "Null": { "aws:RequestTag/project": "true" },
+        "ArnNotLike": {
+          "aws:PrincipalArn": "arn:aws:iam::*:role/aws-service-role/*"
+        }
+      }
+    },
+    {
+      "Sid": "DenyInvalidEnvironmentTag",
+      "Effect": "Deny",
+      "Action": "cloudwatch:PutMetricAlarm",
+      "Resource": "*",
+      "Condition": {
+        "StringNotEqualsIfExists": {
+          "aws:RequestTag/environment": ["dev", "poc", "prod"]
+        },
+        "ArnNotLike": {
+          "aws:PrincipalArn": "arn:aws:iam::*:role/aws-service-role/*"
+        }
+      }
+    },
+    {
+      "Sid": "DenyMissingEnvironmentTag",
+      "Effect": "Deny",
+      "Action": "cloudwatch:PutMetricAlarm",
+      "Resource": "*",
+      "Condition": {
+        "Null": { "aws:RequestTag/environment": "true" },
+        "ArnNotLike": {
+          "aws:PrincipalArn": "arn:aws:iam::*:role/aws-service-role/*"
+        }
+      }
+    },
+    {
+      "Sid": "DenyInvalidTerritoryTag",
+      "Effect": "Deny",
+      "Action": "cloudwatch:PutMetricAlarm",
+      "Resource": "*",
+      "Condition": {
+        "StringNotEqualsIfExists": {
+          "aws:RequestTag/territory": ["colombia", "eeuu", "mexico", "cac", "global"]
+        },
+        "ArnNotLike": {
+          "aws:PrincipalArn": "arn:aws:iam::*:role/aws-service-role/*"
+        }
+      }
+    },
+    {
+      "Sid": "DenyMissingTerritoryTag",
+      "Effect": "Deny",
+      "Action": "cloudwatch:PutMetricAlarm",
+      "Resource": "*",
+      "Condition": {
+        "Null": { "aws:RequestTag/territory": "true" },
+        "ArnNotLike": {
+          "aws:PrincipalArn": "arn:aws:iam::*:role/aws-service-role/*"
+        }
+      }
+    },
+    {
+      "Sid": "DenyInvalidCountryTag",
+      "Effect": "Deny",
+      "Action": "cloudwatch:PutMetricAlarm",
+      "Resource": "*",
+      "Condition": {
+        "StringNotEqualsIfExists": {
+          "aws:RequestTag/country": ["colombia", "panama", "guatemala", "costa-rica", "mexico", "eeuu", "honduras", "global"]
+        },
+        "ArnNotLike": {
+          "aws:PrincipalArn": "arn:aws:iam::*:role/aws-service-role/*"
+        }
+      }
+    },
+    {
+      "Sid": "DenyMissingCountryTag",
+      "Effect": "Deny",
+      "Action": "cloudwatch:PutMetricAlarm",
+      "Resource": "*",
+      "Condition": {
+        "Null": { "aws:RequestTag/country": "true" },
+        "ArnNotLike": {
+          "aws:PrincipalArn": "arn:aws:iam::*:role/aws-service-role/*"
+        }
+      }
+    },
+    {
+      "Sid": "DenyMissingClienteTag",
+      "Effect": "Deny",
+      "Action": "cloudwatch:PutMetricAlarm",
+      "Resource": "*",
+      "Condition": {
+        "Null": { "aws:RequestTag/cliente": "true" },
+        "ArnNotLike": {
+          "aws:PrincipalArn": "arn:aws:iam::*:role/aws-service-role/*"
+        }
+      }
+    },
+    {
+      "Sid": "DenyMissingOwnerTag",
+      "Effect": "Deny",
+      "Action": "cloudwatch:PutMetricAlarm",
+      "Resource": "*",
+      "Condition": {
+        "Null": { "aws:RequestTag/owner": "true" },
+        "ArnNotLike": {
+          "aws:PrincipalArn": "arn:aws:iam::*:role/aws-service-role/*"
+        }
+      }
+    },
+    {
+      "Sid": "DenyInvalidCostCenterTag",
+      "Effect": "Deny",
+      "Action": "cloudwatch:PutMetricAlarm",
+      "Resource": "*",
+      "Condition": {
+        "StringNotEqualsIfExists": {
+          "aws:RequestTag/cost-center": "9952"
+        },
+        "ArnNotLike": {
+          "aws:PrincipalArn": "arn:aws:iam::*:role/aws-service-role/*"
+        }
+      }
+    },
+    {
+      "Sid": "DenyMissingCostCenterTag",
+      "Effect": "Deny",
+      "Action": "cloudwatch:PutMetricAlarm",
+      "Resource": "*",
+      "Condition": {
+        "Null": { "aws:RequestTag/cost-center": "true" },
+        "ArnNotLike": {
+          "aws:PrincipalArn": "arn:aws:iam::*:role/aws-service-role/*"
+        }
+      }
+    }
+  ]
+}

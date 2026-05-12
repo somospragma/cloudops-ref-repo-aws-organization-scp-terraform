@@ -1,0 +1,183 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "DenyInvalidProjectTag",
+      "Effect": "Deny",
+      "Action": [
+        "ecr:CreateRepository",
+        "kinesis:CreateStream",
+        "wafv2:CreateWebACL",
+        "ec2:CreateInternetGateway"
+      ],
+      "Resource": "*",
+      "Condition": {
+        "StringNotEqualsIfExists": {
+          "aws:RequestTag/project": ["sopp-dev", "sopp-poc", "sopp-prod"]
+        }
+      }
+    },
+    {
+      "Sid": "DenyMissingProjectTag",
+      "Effect": "Deny",
+      "Action": [
+        "ecr:CreateRepository",
+        "kinesis:CreateStream",
+        "wafv2:CreateWebACL",
+        "ec2:CreateInternetGateway"
+      ],
+      "Resource": "*",
+      "Condition": {
+        "Null": { "aws:RequestTag/project": "true" }
+      }
+    },
+    {
+      "Sid": "DenyInvalidEnvironmentTag",
+      "Effect": "Deny",
+      "Action": [
+        "ecr:CreateRepository",
+        "kinesis:CreateStream",
+        "wafv2:CreateWebACL",
+        "ec2:CreateInternetGateway"
+      ],
+      "Resource": "*",
+      "Condition": {
+        "StringNotEqualsIfExists": {
+          "aws:RequestTag/environment": ["dev", "poc", "prod"]
+        }
+      }
+    },
+    {
+      "Sid": "DenyMissingEnvironmentTag",
+      "Effect": "Deny",
+      "Action": [
+        "ecr:CreateRepository",
+        "kinesis:CreateStream",
+        "wafv2:CreateWebACL",
+        "ec2:CreateInternetGateway"
+      ],
+      "Resource": "*",
+      "Condition": {
+        "Null": { "aws:RequestTag/environment": "true" }
+      }
+    },
+    {
+      "Sid": "DenyInvalidTerritoryTag",
+      "Effect": "Deny",
+      "Action": [
+        "ecr:CreateRepository",
+        "kinesis:CreateStream",
+        "wafv2:CreateWebACL",
+        "ec2:CreateInternetGateway"
+      ],
+      "Resource": "*",
+      "Condition": {
+        "StringNotEqualsIfExists": {
+          "aws:RequestTag/territory": ["colombia", "eeuu", "mexico", "cac", "global"]
+        }
+      }
+    },
+    {
+      "Sid": "DenyMissingTerritoryTag",
+      "Effect": "Deny",
+      "Action": [
+        "ecr:CreateRepository",
+        "kinesis:CreateStream",
+        "wafv2:CreateWebACL",
+        "ec2:CreateInternetGateway"
+      ],
+      "Resource": "*",
+      "Condition": {
+        "Null": { "aws:RequestTag/territory": "true" }
+      }
+    },
+    {
+      "Sid": "DenyInvalidCountryTag",
+      "Effect": "Deny",
+      "Action": [
+        "ecr:CreateRepository",
+        "kinesis:CreateStream",
+        "wafv2:CreateWebACL",
+        "ec2:CreateInternetGateway"
+      ],
+      "Resource": "*",
+      "Condition": {
+        "StringNotEqualsIfExists": {
+          "aws:RequestTag/country": ["colombia", "panama", "guatemala", "costa-rica", "mexico", "eeuu", "honduras", "global"]
+        }
+      }
+    },
+    {
+      "Sid": "DenyMissingCountryTag",
+      "Effect": "Deny",
+      "Action": [
+        "ecr:CreateRepository",
+        "kinesis:CreateStream",
+        "wafv2:CreateWebACL",
+        "ec2:CreateInternetGateway"
+      ],
+      "Resource": "*",
+      "Condition": {
+        "Null": { "aws:RequestTag/country": "true" }
+      }
+    },
+    {
+      "Sid": "DenyMissingClienteTag",
+      "Effect": "Deny",
+      "Action": [
+        "ecr:CreateRepository",
+        "kinesis:CreateStream",
+        "wafv2:CreateWebACL",
+        "ec2:CreateInternetGateway"
+      ],
+      "Resource": "*",
+      "Condition": {
+        "Null": { "aws:RequestTag/cliente": "true" }
+      }
+    },
+    {
+      "Sid": "DenyMissingOwnerTag",
+      "Effect": "Deny",
+      "Action": [
+        "ecr:CreateRepository",
+        "kinesis:CreateStream",
+        "wafv2:CreateWebACL",
+        "ec2:CreateInternetGateway"
+      ],
+      "Resource": "*",
+      "Condition": {
+        "Null": { "aws:RequestTag/owner": "true" }
+      }
+    },
+    {
+      "Sid": "DenyInvalidCostCenterTag",
+      "Effect": "Deny",
+      "Action": [
+        "ecr:CreateRepository",
+        "kinesis:CreateStream",
+        "wafv2:CreateWebACL",
+        "ec2:CreateInternetGateway"
+      ],
+      "Resource": "*",
+      "Condition": {
+        "StringNotEqualsIfExists": {
+          "aws:RequestTag/cost-center": "9952"
+        }
+      }
+    },
+    {
+      "Sid": "DenyMissingCostCenterTag",
+      "Effect": "Deny",
+      "Action": [
+        "ecr:CreateRepository",
+        "kinesis:CreateStream",
+        "wafv2:CreateWebACL",
+        "ec2:CreateInternetGateway"
+      ],
+      "Resource": "*",
+      "Condition": {
+        "Null": { "aws:RequestTag/cost-center": "true" }
+      }
+    }
+  ]
+}
