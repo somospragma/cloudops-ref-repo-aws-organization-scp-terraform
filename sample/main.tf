@@ -1,6 +1,4 @@
 # AWS Organization SCP Module - Segmented Invocations
-# PC-IAC-026: Invoke module using transformed locals (never raw variables)
-# PC-IAC-013: Module invocation ordering
 # 4 independent module invocations for each environment group
 
 # ============================================================================
@@ -19,8 +17,8 @@ module "organization_scps_poc" {
   common_tags  = merge(
     var.common_tags,
     {
-      Group       = "poc"
-      ManagedBy   = "Terraform"
+      group       = "poc"
+      managed-by   = "terraform"
     }
   )
 }
@@ -36,13 +34,13 @@ module "organization_scps_prod" {
 
   client       = var.client
   project      = var.project
-  environment  = var.environment
+  environment  = "prod"
   scp_policies = local.scp_policies_prod_transformed
   common_tags  = merge(
     var.common_tags,
     {
-      Group       = "prod"
-      ManagedBy   = "Terraform"
+      group       = "prod"
+      managed-by   = "terraform"
     }
   )
 }
@@ -52,6 +50,7 @@ module "organization_scps_prod" {
 # ============================================================================
 module "organization_scps_suspended" {
   source = "../"
+
   providers = {
     aws.project = aws.principal
   }
@@ -63,8 +62,8 @@ module "organization_scps_suspended" {
   common_tags  = merge(
     var.common_tags,
     {
-      Group       = "suspended"
-      ManagedBy   = "Terraform"
+      group       = "suspended"
+      managed-by   = "terraform"
     }
   )
 }
@@ -74,6 +73,7 @@ module "organization_scps_suspended" {
 # ============================================================================
 module "organization_scps_shared" {
   source = "../"
+
   providers = {
     aws.project = aws.principal
   }
@@ -85,8 +85,8 @@ module "organization_scps_shared" {
   common_tags  = merge(
     var.common_tags,
     {
-      Group       = "shared"
-      ManagedBy   = "Terraform"
+      group       = "shared"
+      managed-by   = "terraform"
     }
   )
 }
